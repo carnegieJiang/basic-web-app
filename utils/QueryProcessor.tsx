@@ -1,4 +1,4 @@
-export default function QueryProcessor(query: string): string {
+export default function QueryProcessor(query: string) {
   const q = query.toLowerCase().trim();
 
   if (q.includes("shakespeare")) {
@@ -17,5 +17,12 @@ export default function QueryProcessor(query: string): string {
     return "songyij";
   }
 
-  return "";
+  if (q.includes("plus")) {
+    const numbers = q.match(/(-?\d+)/g);
+    if (numbers && numbers.length === 2) {
+      return (parseInt(numbers[0]) + parseInt(numbers[1])).toString();
+    }
+  }
+
+  
 }
